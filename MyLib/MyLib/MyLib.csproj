@@ -55,7 +55,14 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>gacutil /i $(TargetPath)</PostBuildEvent>
+    <PostBuildEvent>REM COPY D:\TEMP\*.TXT D:\TEMP1\*.*
+REM COPY D:\*.TXT D:\TEMP1\*.*
+"C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\gacutil.EXE"  /i $(TargetPath)
+</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
