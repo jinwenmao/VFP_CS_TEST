@@ -11,3 +11,9 @@ E:\MyLib\MyLib\bin\Debug>gacutil/i mylib.dll
 然后用 regasm MyLib.dll 注册这个dll
 
 E:\MyLib\MyLib\bin\Debug>regasmmylib.dll
+
+
+*********************************************************
+"C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\gacutil.EXE"  /i $(TargetPath)
+"C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\gacutil.EXE"  /i $(ProjectDir)\dll\ServerAssembly.dll
+

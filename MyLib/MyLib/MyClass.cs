@@ -3,7 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Runtime.InteropServices;
+using RemoteServer;
 
+using System.Runtime.Remoting;
+using System.Runtime.Remoting.Channels;
+
+using System.Runtime.Remoting.Channels.Tcp;
+using System.Runtime.Remoting.Channels.Http;
 
     namespace dll1
     {
@@ -39,8 +45,69 @@ using System.Runtime.InteropServices;
             public void Dispose()
 
             { }
+            public void Test_remote()
+            {
+                //Type serverType = typeof(MyServer);
+                Type serverType = typeof(MyServer);
+             
+                string url = GetActivationURL();
 
+                RemotingConfiguration.RegisterWellKnownClientType(serverType, url);
 
+                MyServer obj;
+                obj = new MyServer();
+                obj.Count();
+                obj.Count();
+            }
+
+            string GetActivationURL()
+            {
+                return "tcp://10.10.10.20:8005/CounterServer";
+                //if (m_TcpRadio.Checked)
+                //{
+                //    if (m_ServerRadio.Checked)
+                //    {
+                //        //Server activation over TCP. Note object URI
+                //        // return "tcp://localhost:8005/CounterServer";
+                //        return "tcp://10.10.10.20:8005/CounterServer";
+                //    }
+                //    else
+                //    {
+                //        //Client activation over tcp
+                //        //return "tcp://localhost:8005";
+                //        return "tcp://10.10.10.20:8005";
+                //    }
+                //}
+                //if (m_HttpRadio.Checked)//http channel 
+                //{
+                //    if (m_ServerRadio.Checked)
+                //    {
+                //        //Server activation over http. Note object URI
+                //        ///// //return "http://localhost:8006/CounterServer";
+                //        return "http://10.10.10.20:8006/CounterServer";
+                //    }
+                //    else
+                //    {
+                //        //Client activation over http
+                //        ////// return "http://localhost:8006";
+                //        return "http://10.10.10.20:8006";
+                //    }
+                //}
+                //else//IPC channel 
+                //{
+                //    if (m_ServerRadio.Checked)
+                //    {
+                //        //Server activation. Note object URI
+                //        return "ipc://MyHost/CounterServer";
+                //    }
+                //    else
+                //    {
+                //        //Client activation
+                //        return "ipc://MyHost";
+                //    }
+                //}
+
+            }
 
         }
 
@@ -56,6 +123,7 @@ using System.Runtime.InteropServices;
             void Dispose();
 
             string getdll(string A);
+            void Test_remote();
 
 
 

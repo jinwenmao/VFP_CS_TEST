@@ -38,8 +38,12 @@
     <AssemblyOriginatorKeyFile>MyKey.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ServerAssembly">
+      <HintPath>dll\ServerAssembly.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Remoting" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,7 +62,7 @@
     <PostBuildEvent>REM COPY D:\TEMP\*.TXT D:\TEMP1\*.*
 REM COPY D:\*.TXT D:\TEMP1\*.*
 "C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\gacutil.EXE"  /i $(TargetPath)
-</PostBuildEvent>
+"C:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\NETFX 4.0 Tools\gacutil.EXE"  /i $(ProjectDir)\dll\ServerAssembly.dll</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>
